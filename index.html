@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 style="color:green">Ajax calls</h2>
+    <table border="1">
+        <tr>
+            <th>Country</th>
+        <th>Capital</th>
+        <th>population</th>
+    </tr>
+    <tr>
+        <td id="num8"></td>
+        <td id="num9"></td>
+        <td id="num10"></td>
+    </tr>
+    </table>
+
+    <!-- <button onclick="loadData()">edit</button> -->
+   
+    <!-- <input type="text" id="country">
+    <button type="button" onclick="loadData()">LoadData</button>
+    <br><br>
+
+    CAPITAL IS: <span id="capital"></span> -->
+
+</body>
+<script>
+    
+    
+// function loadData(){
+   
+//    var country=document.getElementById("country").value;
+//    var xhttp=new XMLHttpRequest();
+ 
+   
+//    xhttp.onreadystatechange=function(){
+//        if(xhttp.readyState === 4 && this.status === 200){
+//            var responseData=xhttp.responseText;
+//            var JsonData=JSON.parse(responseData);
+//            var capital=JsonData[0].capital;
+//            document.getElementById("capital").innerHTML=capital;
+
+//        }
+//    }
+//    xhttp.open("GET","https://restcountries.eu/rest/v2/name/"+country+"?fullText=true",true )
+//     xhttp.send();
+// }
+
+// function loadData(){
+    var xhr = new XMLHttpRequest();
+xhr.open("GET", "https://restcountries.eu/rest/v2/name/India?fullText=true", true);
+xhr.onreadystatechange = function() {
+  if (xhr.readyState == 4) {
+    // innerText does not let the attacker inject HTML elements.
+    var responseData = xhr.responseText;
+     var JsonData=JSON.parse(responseData);
+     var capital=JsonData[0].capital;
+     var country=JsonData[0].name;
+     var population=JsonData[0].population;
+     
+    //  var arr=[];
+    //   var y=arr.push(capital)
+      
+     document.getElementById("num9").innerHTML=capital;
+     document.getElementById("num8").innerHTML=country;
+     document.getElementById("num10").innerHTML=population;
+     
+     
+
+    
+  }
+}
+xhr.send();
+// }
+</script>
+</html>
